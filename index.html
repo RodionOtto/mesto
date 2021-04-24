@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="ru">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="Description"
+      content="Автор: Родион Жаданов, Проектная работа: создание сайта с фотогалереей и реализацией регистрации, лайков, описания фото"
+    />
+    <link rel="stylesheet" href="./pages/index.css" />
+    <meta name="keywords" content="html, css, js" />
+    <meta name="author" content="Родион Жаданов" />
+    <title lang="en">Mesto Russia</title>
+  </head>
+  <body class="page">
+    <header class="header">
+      <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта" />
+    </header>
+    <main>
+      <section class="profile">
+        <img
+          alt="Аватар профиля"
+          class="profile__avatar"
+          src="./images/Avatar.jpg"
+        />
+        <div class="profile__info">
+          <h1 class="profile__name">Жак-Ив Кусто</h1>
+          <button
+            class="profile__edit-button"
+            type="button"
+            title="Редактировать профиль"
+          ></button>
+          <p class="profile__description">Исследователь океана</p>
+        </div>
+        <button
+          class="profile__add-button"
+          type="button"
+          title="Добавить фотографию"
+        ></button>
+      </section>
+      <section class="elements">
+        <ul class="elements__list">
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Река, проходящая в заснеженном лесу"
+              src="./images/elementsPicture/Romanian Moutains.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">
+                Река, проходящая в заснеженном лесу
+              </h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Иссушённое дерево посреди Намибийской пустыни"
+              src="./images/elementsPicture/Dryed Tree in Desert.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">
+                Иссушённое дерево посреди Намибийской пустыни
+              </h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Скалистые горы в Боулдере штат Колорадо"
+              src="./images/elementsPicture/Mountain in Boulder.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">
+                Скалистые горы в Боулдере штат Колорадо
+              </h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Национальный парк Вайоминга, покрытый пеленой тумана"
+              src="./images/elementsPicture/Foggy Forest.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">
+                Национальный парк Вайоминга, покрытый пеленой тумана
+              </h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Озеро Дельта в национальном парке Гранд Тетон"
+              src="./images/elementsPicture/Delta Lake.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">
+                Озеро Дельта в национальном парке Гранд Тетон
+              </h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+          <li class="elements__card">
+            <img
+              class="elements__image"
+              alt="Небольшой водопад в густом лесу"
+              src="./images/elementsPicture/Waterfall.jpg"
+            />
+            <div class="elements__card_info">
+              <h2 class="elements__header">Небольшой водопад в густом лесу</h2>
+              <button
+                class="elements__like"
+                type="button"
+                title="Оценить фотографию"
+              ></button>
+            </div>
+          </li>
+        </ul>
+      </section>
+    </main>
+    <footer class="footer">
+      <p class="footer__copyright" lang="en">&copy; 2021 Mesto Russia</p>
+    </footer>
+
+    <div class="popup">
+      <div class="popup__container">
+        <button
+          class="popup__close"
+          type="button"
+          title="Закрыть окно"
+        ></button>
+        <form action="post" id="editForm">
+          <fieldset class="popup__fieldset">
+            <legend class="popup__header">Редактировать профиль</legend>
+            <input
+              type="text"
+              class="popup__input"
+              name="name"
+              value=""
+              placeholder="Введите свое имя или никнейм"
+              minlength="2"
+              maxlength="40"
+              id="inputName"
+            />
+            <input
+              type="text"
+              class="popup__input"
+              name="description"
+              value=""
+              placeholder="Ваш род деятельности"
+              minlength="2"
+              maxlength="150"
+              id="inputDescription"
+            />
+            <button class="popup__submitButton" type="submit">Сохранить</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+    <script src="./index.js"></script>
+  </body>
+</html>
