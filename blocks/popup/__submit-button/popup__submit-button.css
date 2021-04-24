@@ -1,4 +1,4 @@
-.popup__submitbutton {
+.popup__submit-button {
   height: 50px;
   padding: 0;
   margin-top: 18px;
@@ -15,12 +15,12 @@
   transition: opacity ease-in-out 0.3s;
 }
 
-.popup__submitbutton:hover {
+.popup__submit-button:hover:hover {
   opacity: 0.8;
 }
 
 @media (max-width: 768px) {
-  .popup__submitbutton {
+  .popup__submit-button {
     margin-top: 15px;
     height: 46px;
     font-size: 14px;
