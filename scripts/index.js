@@ -10,12 +10,9 @@ let formElement = document.querySelector("#editForm");
 let nameInput = document.querySelector("#inputName");
 let descriptionInput = document.querySelector("#inputDescription");
 
-nameInput.value = "Жак-Ив Кусто";
-descriptionInput.value = "Исследователь океана";
-
 function formSubmitHandler(evt) {
   evt.preventDefault();
-  popup.classList.remove("popup_opened");
+  closePopup();
   profileName.textContent = nameInput.value;
   profileInfo.textContent = descriptionInput.value;
 }
@@ -27,8 +24,6 @@ function openPopup() {
 }
 
 function closePopup() {
-  nameInput.value = profileName.textContent;
-  descriptionInput.value = profileInfo.textContent;
   popup.classList.remove("popup_opened");
 }
 
