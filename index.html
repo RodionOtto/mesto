@@ -39,26 +39,7 @@
         ></button>
       </section>
       <section class="elements">
-        <ul class="elements__list">
-          <template id="elements__template">
-            <li class="elements__card">
-              <img class="elements__image" alt="" src="" />
-              <div class="elements__card-info">
-                <h2 class="elements__header"></h2>
-                <button
-                  class="elements__like-button"
-                  type="button"
-                  title="Оценить фотографию"
-                ></button>
-                <button
-                  type="button"
-                  class="elements__delete-button"
-                  title="Удалить карточку"
-                ></button>
-              </div>
-            </li>
-          </template>
-        </ul>
+        <ul class="elements__list"></ul>
       </section>
     </main>
     <footer class="footer">
@@ -146,6 +127,25 @@
         <figcaption class="increasedcard__alt"></figcaption>
       </figure>
     </div>
+
+    <template id="elements__template">
+      <li class="elements__card">
+        <img class="elements__image" alt="" src="" />
+        <div class="elements__card-info">
+          <h2 class="elements__header"></h2>
+          <button
+            class="elements__like-button"
+            type="button"
+            title="Оценить фотографию"
+          ></button>
+          <button
+            type="button"
+            class="elements__delete-button"
+            title="Удалить карточку"
+          ></button>
+        </div>
+      </li>
+    </template>
 
     <script src="./scripts/index.js"></script>
   </body>
