@@ -1,0 +1,10 @@
+.increasedcard__alt {
+  display: flex;
+  margin: 10px auto 68px;
+  text-align: left;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
+  color: #fff;
+}

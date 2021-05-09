@@ -40,106 +40,24 @@
       </section>
       <section class="elements">
         <ul class="elements__list">
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Река, проходящая в заснеженном лесу"
-              src="./images/elementsPicture/RomanianMoutains.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">
-                Река, проходящая в заснеженном лесу
-              </h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Иссушённое дерево посреди Намибийской пустыни"
-              src="./images/elementsPicture/DryedTreeinDesert.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">
-                Иссушённое дерево посреди Намибийской пустыни
-              </h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Скалистые горы в Боулдере штат Колорадо"
-              src="./images/elementsPicture/MountaininBoulder.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">
-                Скалистые горы в Боулдере штат Колорадо
-              </h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Национальный парк Вайоминга, покрытый пеленой тумана"
-              src="./images/elementsPicture/FoggyForest.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">
-                Национальный парк Вайоминга, покрытый пеленой тумана
-              </h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Озеро Дельта в национальном парке Гранд Тетон"
-              src="./images/elementsPicture/DeltaLake.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">
-                Озеро Дельта в национальном парке Гранд Тетон
-              </h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
-          <li class="elements__card">
-            <img
-              class="elements__image"
-              alt="Небольшой водопад в густом лесу"
-              src="./images/elementsPicture/Waterfall.jpg"
-            />
-            <div class="elements__card-info">
-              <h2 class="elements__header">Небольшой водопад в густом лесу</h2>
-              <button
-                class="elements__like"
-                type="button"
-                title="Оценить фотографию"
-              ></button>
-            </div>
-          </li>
+          <template id="elements__template">
+            <li class="elements__card">
+              <img class="elements__image" alt="" src="" />
+              <div class="elements__card-info">
+                <h2 class="elements__header"></h2>
+                <button
+                  class="elements__like-button"
+                  type="button"
+                  title="Оценить фотографию"
+                ></button>
+                <button
+                  type="button"
+                  class="elements__delete-button"
+                  title="Удалить карточку"
+                ></button>
+              </div>
+            </li>
+          </template>
         </ul>
       </section>
     </main>
@@ -147,7 +65,7 @@
       <p class="footer__copyright" lang="en">&copy; 2021 Mesto Russia</p>
     </footer>
 
-    <div class="popup">
+    <div class="popup popup__profile">
       <div class="popup__container">
         <button
           class="popup__close"
@@ -184,6 +102,51 @@
         </form>
       </div>
     </div>
+
+    <div class="popup popup__addplace">
+      <div class="popup__container">
+        <button
+          class="popup__close"
+          type="button"
+          title="Закрыть окно"
+        ></button>
+        <form action="post" id="addPlaceForm" name="popup-form">
+          <fieldset class="popup__fieldset">
+            <legend class="popup__header">Новое место</legend>
+            <input
+              type="text"
+              class="popup__input"
+              name="placename"
+              value=""
+              placeholder="Название"
+              minlength="2"
+              maxlength="100"
+              id="inputPlaceName"
+            />
+            <input
+              type="url"
+              class="popup__input"
+              name="picturelink"
+              value=""
+              placeholder="Ссылка на картинку"
+              minlength="2"
+              maxlength="250"
+              id="inputPictureLink"
+            />
+            <button class="popup__submit-button" type="submit">Создать</button>
+          </fieldset>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup__increasedcard">
+      <figure class="increasedcard">
+        <button type="button" class="popup__close"></button>
+        <img class="increasedcard__image" alt="#" src="#" />
+        <figcaption class="increasedcard__alt"></figcaption>
+      </figure>
+    </div>
+
     <script src="./scripts/index.js"></script>
   </body>
 </html>
