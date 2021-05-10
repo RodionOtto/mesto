@@ -15,7 +15,15 @@ const elementsTemplate = document.querySelector("#elements__template").content;
 const elementsList = document.querySelector(".elements__list");
 const popupIncreased = document.querySelector(".popup_type_increasedcard");
 
-const popupCloseButton = document.querySelectorAll(".popup__close");
+const increasedImage = popupIncreased.querySelector(".increasedcard__image");
+const increasedElementCaption = popupIncreased.querySelector(
+  ".increasedcard__alt"
+);
+
+const newPlaceName = document.querySelector("#inputPlaceName");
+const newPictureLink = document.querySelector("#inputPictureLink");
+
+const popupCloseButtons = document.querySelectorAll(".popup__close");
 
 //Массив с карточками по умолчанию
 const initialCards = [
@@ -56,7 +64,7 @@ initialCards.forEach((element) => {
 });
 
 //Функция закрытия попапов без сохранения изменений
-popupCloseButton.forEach((button) => {
+popupCloseButtons.forEach((button) => {
   const popup = button.closest(".popup");
   button.addEventListener("click", () => closePopup(popup));
 });
@@ -71,9 +79,7 @@ function createElements(element) {
   const elementImage = newElement.querySelector(".elements__image");
   elementImage.src = element.link;
   elementImage.alt = element.name;
-  newElement
-    .querySelector(".elements__image")
-    .addEventListener("click", increasedCard);
+  elementImage.addEventListener("click", openImagePopup);
   newElement
     .querySelector(".elements__like-button")
     .addEventListener("click", likeElement);
@@ -95,14 +101,10 @@ function deleteElement(event) {
 }
 
 //Функция открытия карточки
-function increasedCard(event) {
-  const increasedImage = popupIncreased.querySelector(".increasedcard__image");
+function openImagePopup(event) {
   increasedImage.src = event.target.src;
   increasedImage.alt = event.target.alt;
-  const IncreasedElementCaption = popupIncreased.querySelector(
-    ".increasedcard__alt"
-  );
-  IncreasedElementCaption.textContent = event.target.alt;
+  increasedElementCaption.textContent = event.target.alt;
   openPopup(popupIncreased);
 }
 
@@ -114,7 +116,7 @@ function openPopupEditProfile() {
 }
 
 //Функция сохранения редактирования профиля с отменой отправки данных на сервер
-function editProfileSubmit(event) {
+function submitEditProfile(event) {
   event.preventDefault();
   profileName.textContent = nameInput.value;
   profileInfo.textContent = descriptionInput.value;
@@ -129,10 +131,8 @@ function openPopupAddPlace() {
 }
 
 //Функция сохранения новой карточки с отменой отправки данных на сервер
-function newElementSubmit(event) {
+function submitNewElement(event) {
   event.preventDefault();
-  const newPlaceName = document.querySelector("#inputPlaceName");
-  const newPictureLink = document.querySelector("#inputPictureLink");
   const newCard = { name: newPlaceName.value, link: newPictureLink.value };
   elementsList.prepend(createElements(newCard));
   closePopup(popupAddPlace);
@@ -151,5 +151,5 @@ function closePopup(popup) {
 //Добавление слушателей событий
 editButton.addEventListener("click", openPopupEditProfile);
 addPlaceButton.addEventListener("click", openPopupAddPlace);
-popupEditProfile.addEventListener("submit", editProfileSubmit);
-popupAddPlace.addEventListener("submit", newElementSubmit);
+popupEditProfile.addEventListener("submit", submitEditProfile);
+popupAddPlace.addEventListener("submit", submitNewElement);
