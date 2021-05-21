@@ -53,7 +53,7 @@
           type="button"
           title="Закрыть окно"
         ></button>
-        <form action="post" id="editForm" name="popup-form">
+        <form action="post" id="editForm" class="popup__form" novalidate>
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Редактировать профиль</legend>
             <input
@@ -61,23 +61,30 @@
               class="popup__input"
               name="name"
               value=""
+              autocomplete="off"
               placeholder="Введите свое имя или никнейм"
               minlength="2"
               maxlength="40"
               id="inputName"
               required
             />
+            <span class="popup__input_error-text" id="inputName-error"></span>
             <input
               type="text"
               class="popup__input"
               name="description"
               value=""
+              autocomplete="off"
               placeholder="Ваш род деятельности"
               minlength="2"
-              maxlength="150"
+              maxlength="200"
               id="inputDescription"
               required
             />
+            <span
+              class="popup__input_error-text"
+              id="inputDescription-error"
+            ></span>
             <button class="popup__submit-button" type="submit">
               Сохранить
             </button>
@@ -93,7 +100,7 @@
           type="button"
           title="Закрыть окно"
         ></button>
-        <form action="post" id="addPlaceForm" name="popup-form">
+        <form action="post" id="addPlaceForm" class="popup__form" novalidate>
           <fieldset class="popup__fieldset">
             <legend class="popup__header">Новое место</legend>
             <input
@@ -101,23 +108,33 @@
               class="popup__input"
               name="placename"
               value=""
+              autocomplete="off"
               placeholder="Название"
               minlength="2"
-              maxlength="100"
+              maxlength="30"
               id="inputPlaceName"
               required
             />
+            <span
+              class="popup__input_error-text"
+              id="inputPlaceName-error"
+            ></span>
             <input
               type="url"
               class="popup__input"
               name="picturelink"
               value=""
+              autocomplete="off"
               placeholder="Ссылка на картинку"
               minlength="2"
               maxlength="250"
               id="inputPictureLink"
               required
             />
+            <span
+              class="popup__input_error-text"
+              id="inputPictureLink-error"
+            ></span>
             <button class="popup__submit-button" type="submit">Создать</button>
           </fieldset>
         </form>
@@ -152,5 +169,6 @@
     </template>
 
     <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
   </body>
 </html>

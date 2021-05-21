@@ -69,6 +69,26 @@ popupCloseButtons.forEach((button) => {
   button.addEventListener("click", () => closePopup(popup));
 });
 
+//Функция закрытия открытого попапа
+function closeOpenedPopup() {
+  const openedPopup = document.querySelector(".popup_opened");
+  closePopup(openedPopup);
+}
+
+//Функция закрытия попапов кликом на оверлей
+function closePopupWithOverlay(evt) {
+  if (evt.target === evt.currentTarget) {
+    closeOpenedPopup();
+  }
+}
+
+//Функция закрытия попапов на клавишу Esc
+function closePopupWithEscape(evt) {
+  if (evt.key === "Escape") {
+    closeOpenedPopup();
+  }
+}
+
 //Функция создания новой карточки
 function createElements(element) {
   const newElement = elementsTemplate
@@ -140,11 +160,15 @@ function submitNewElement(event) {
 
 //Функция добавления класса открытия попапа
 function openPopup(popup) {
+  popup.addEventListener("click", closePopupWithOverlay);
+  document.addEventListener("keydown", closePopupWithEscape);
   popup.classList.add("popup_opened");
 }
 
 //Функция удаления класса открытия попапа
 function closePopup(popup) {
+  popup.removeEventListener("click", closePopupWithOverlay);
+  document.removeEventListener("keydown", closePopupWithEscape);
   popup.classList.remove("popup_opened");
 }
 
