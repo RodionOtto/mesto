@@ -4,7 +4,7 @@ const profileInfo = document.querySelector(".profile__description");
 const nameInput = document.querySelector("#inputName");
 const descriptionInput = document.querySelector("#inputDescription");
 const editButton = document.querySelector(".profile__edit-button");
-const popupEditProfile = document.querySelector(".popup_type_editprofile"); //
+const popupEditProfile = document.querySelector(".popup_type_editprofile");
 
 const popupAddPlace = document.querySelector(".popup_type_addplace");
 const addPlaceButton = document.querySelector(".profile__add-button");
