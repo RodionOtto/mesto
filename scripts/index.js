@@ -10,6 +10,12 @@ const popupAddPlace = document.querySelector(".popup_type_addplace");
 const addPlaceButton = document.querySelector(".profile__add-button");
 const placeNameInput = document.querySelector("#inputPlaceName");
 const pictureLinkInput = document.querySelector("#inputPictureLink");
+const popupAddNewPlace = Array.from(
+  popupAddPlace.querySelectorAll(".popup__input")
+);
+const popupAddSubmitButton = popupAddPlace.querySelector(
+  ".popup__submit-button"
+);
 
 const elementsTemplate = document.querySelector("#elements__template").content;
 const elementsList = document.querySelector(".elements__list");
@@ -24,40 +30,6 @@ const newPlaceName = document.querySelector("#inputPlaceName");
 const newPictureLink = document.querySelector("#inputPictureLink");
 
 const popupCloseButtons = document.querySelectorAll(".popup__close");
-
-//Массив с карточками по умолчанию
-const initialCards = [
-  {
-    name: "Архыз",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
-  },
-  {
-    name: "Челябинская область",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
-  },
-  {
-    name: "Иваново",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
-  },
-  {
-    name: "Камчатка",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
-  },
-  {
-    name: "Холмогорский район",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
-  },
-  {
-    name: "Байкал",
-    link:
-      "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
-  },
-];
 
 initialCards.forEach((element) => {
   elementsList.prepend(createElements(element));
@@ -144,11 +116,11 @@ function submitEditProfile(event) {
 }
 
 //Функция открытия попапа добавления новой карточки
-function openPopupAddPlace() {
-  placeNameInput.value = "";
-  pictureLinkInput.value = "";
-  openPopup(popupAddPlace);
-}
+//function openPopupAddPlace() {
+//placeNameInput.value = "";
+//pictureLinkInput.value = "";
+//openPopup(popupAddPlace);
+//}
 
 //Функция сохранения новой карточки с отменой отправки данных на сервер
 function submitNewElement(event) {
@@ -174,6 +146,11 @@ function closePopup(popup) {
 
 //Добавление слушателей событий
 editButton.addEventListener("click", openPopupEditProfile);
-addPlaceButton.addEventListener("click", openPopupAddPlace);
+addPlaceButton.addEventListener("click", () => {
+  placeNameInput.value = "";
+  pictureLinkInput.value = "";
+  switchSubmitButtonState(popupAddNewPlace, popupAddSubmitButton);
+  openPopup(popupAddPlace);
+});
 popupEditProfile.addEventListener("submit", submitEditProfile);
 popupAddPlace.addEventListener("submit", submitNewElement);
