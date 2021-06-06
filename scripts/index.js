@@ -52,6 +52,7 @@ initialCards.forEach((element) => {
 function openPopupEditProfile() {
   nameInput.value = profileName.textContent;
   descriptionInput.value = profileInfo.textContent;
+  editProfileValidator.deleteInputError();
   openPopup(popupEditProfile);
 }
 
@@ -95,7 +96,7 @@ function closePopupWithEscape(evt) {
 function openPopup(popup) {
   popup.addEventListener("click", closePopupWithOverlay);
   document.addEventListener("keydown", closePopupWithEscape);
-  editProfileValidator.deleteInputError();
+  //editProfileValidator.deleteInputError();
   popup.classList.add("popup_opened");
 }
 

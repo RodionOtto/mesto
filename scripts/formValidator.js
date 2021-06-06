@@ -84,24 +84,21 @@ class FormValidator {
 
   //Функция включения валидации
   enableValidation() {
-    const formList = Array.from(document.querySelectorAll(this._formSelector));
-    formList.forEach(() => {
-      this._formElement.addEventListener("submit", (evt) => {
-        evt.preventDefault();
-      });
+    this._formElement.addEventListener("submit", (evt) => {
+      evt.preventDefault();
     });
+
     this._setEventListeners();
   }
 }
 
-//Определение классов и селекторов, необходимых для валидации
-const validationSettings = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
-};
-
 export { FormValidator };
+
+/*
+const formList = Array.from(document.querySelectorAll(this._formSelector));
+formList.forEach(() => {
+  this._formElement.addEventListener("submit", (evt) => {
+    evt.preventDefault();
+  });
+});
+*/
