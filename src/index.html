@@ -7,21 +7,24 @@
       name="Description"
       content="Автор: Родион Жаданов, Проектная работа: создание сайта с фотогалереей и реализацией регистрации, лайков, описания фото"
     />
-    <link rel="stylesheet" href="./pages/index.css" />
     <meta name="keywords" content="html, css, js" />
     <meta name="author" content="Родион Жаданов" />
     <title lang="en">Mesto Russia</title>
   </head>
   <body class="page">
     <header class="header">
-      <img class="header__logo" src="./images/logo.svg" alt="Логотип сайта" />
+      <img
+        class="header__logo"
+        src="<%=require('./images/logo.svg')%>"
+        alt="Логотип сайта"
+      />
     </header>
     <main>
       <section class="profile">
         <img
           alt="Аватар профиля"
           class="profile__avatar"
-          src="./images/Avatar.jpg"
+          src="<%=require('./images/Avatar.jpg')%>"
         />
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
@@ -170,7 +173,5 @@
         </div>
       </li>
     </template>
-
-    <script type="module" src="./scripts/index.js"></script>
   </body>
 </html>

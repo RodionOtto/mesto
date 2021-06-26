@@ -84,8 +84,11 @@ class FormValidator {
 
   //Функция включения валидации
   enableValidation() {
-    this._formElement.addEventListener("submit", (evt) => {
-      evt.preventDefault();
+    const formList = Array.from(document.querySelectorAll(this._formSelector));
+    formList.forEach(() => {
+      this._formElement.addEventListener("submit", (evt) => {
+        evt.preventDefault();
+      });
     });
 
     this._setEventListeners();
@@ -93,12 +96,3 @@ class FormValidator {
 }
 
 export { FormValidator };
-
-/*
-const formList = Array.from(document.querySelectorAll(this._formSelector));
-formList.forEach(() => {
-  this._formElement.addEventListener("submit", (evt) => {
-    evt.preventDefault();
-  });
-});
-*/

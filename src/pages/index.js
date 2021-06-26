@@ -1,32 +1,116 @@
-import initialCards from "./initial-cards.js";
-import { Card } from "./card.js";
-import { FormValidator } from "./formValidator.js";
+import "../pages/index.css";
+import Card from "../components/Card.js";
+import { FormValidator } from "../components/FormValidator.js";
+import {
+  initialCards,
+  profileInputName,
+  profileInputDescription,
+  editButton,
+  popupEdit,
+  popupAddPlace,
+  addPlaceButton,
+  userConfig,
+  addPopupSelector,
+  addCardForm,
+  editProfilePopup,
+  editProfileForm,
+  imagePopupSelector,
+  increasedImage,
+  increasedElementCaption,
+  cardLink,
+  cardTitle,
+  validationSettings,
+} from "../utils/constants.js";
+import Section from "../components/Section.js";
+import UserInfo from "../components/UserInfo.js";
+import PopupWithImage from "../components/PopupWithImage.js";
+import PopupWithForm from "../components/PopupWithForm.js";
 
-//Объявление констант
-const profileName = document.querySelector(".profile__name");
-const profileInfo = document.querySelector(".profile__description");
-const nameInput = document.querySelector("#inputName");
-const descriptionInput = document.querySelector("#inputDescription");
-const editButton = document.querySelector(".profile__edit-button");
-const popupEditProfile = document.querySelector(".popup_type_editprofile");
-const popupAddPlace = document.querySelector(".popup_type_addplace");
-const addPlaceButton = document.querySelector(".profile__add-button");
-const addCardForm = document.querySelector("#addPlaceForm");
-const popupCloseButtons = document.querySelectorAll(".popup__close");
-const elementsList = document.querySelector(".elements__list");
-const newPlaceName = document.querySelector("#inputPlaceName");
-const newPictureLink = document.querySelector("#inputPictureLink");
+// Открытие попапа карточки
+const popupWithImage = new PopupWithImage(
+  imagePopupSelector,
+  increasedImage,
+  increasedElementCaption
+);
+popupWithImage.setEventListeners();
 
-const validationSettings = {
-  formSelector: ".popup__form",
-  inputSelector: ".popup__input",
-  submitButtonSelector: ".popup__submit-button",
-  inactiveButtonClass: "popup__submit-button_disabled",
-  inputErrorClass: "popup__input_type_error",
-  errorClass: "popup__input-error_active",
+// Данные профиля
+const { nameSelector, descriptionSelector } = userConfig;
+const userInfo = new UserInfo(nameSelector, descriptionSelector);
+
+//Попап редактирования профиля
+const popupEditProfile = new PopupWithForm(
+  editProfilePopup,
+  editProfileForm,
+  (formValues) => {
+    userInfo.setUserInfo(formValues);
+    popupEditProfile.close();
+  }
+);
+popupEditProfile.setEventListeners();
+
+editButton.addEventListener("click", () => {
+  const { name, description } = userInfo.getUserInfo();
+  profileInputName.value = name;
+  profileInputDescription.value = description;
+  editProfileValidator.deleteInputError();
+  popupEditProfile.open();
+});
+
+//Попап добавления карточки
+const popupAddImage = new PopupWithForm(
+  addPopupSelector,
+  addCardForm,
+  (item) => {
+    newCardList.addItem(createCard(item));
+    popupAddImage.close();
+  }
+);
+popupAddImage.setEventListeners();
+
+addPlaceButton.addEventListener("click", () => {
+  addProfileValidator.deleteInputError();
+  popupAddImage.open();
+});
+
+const createCard = (item) => {
+  const card = new Card(
+    {
+      name: item.cardTitle,
+      link: item.cardLink,
+      handleCardClick: () => {
+        popupWithImage.open(item.cardTitle, item.cardLink);
+      },
+    },
+    "#elements__template"
+  );
+  return card.generateCard();
 };
 
+// Добавление карточек по умолчанию
+const newCardList = new Section(
+  {
+    items: initialCards,
+    renderer: (element) => {
+      newCardList.addItem(createCard(element));
+    },
+  },
+  ".elements__list"
+);
+
+newCardList.renderItems();
+
+//Валидаторы попапов
 const addProfileValidator = new FormValidator(
+  validationSettings,
+  popupAddPlace
+);
+addProfileValidator.enableValidation();
+
+const editProfileValidator = new FormValidator(validationSettings, popupEdit);
+editProfileValidator.enableValidation();
+
+/*const addProfileValidator = new FormValidator(
   validationSettings,
   popupAddPlace
 );
@@ -125,3 +209,4 @@ popupEditProfile.addEventListener("submit", submitEditProfile);
 popupAddPlace.addEventListener("submit", submitNewElement);
 
 export { openPopup };
+*/
