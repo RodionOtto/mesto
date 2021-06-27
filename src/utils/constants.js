@@ -54,8 +54,10 @@ export const editProfileForm = "#editForm";
 export const addPopupSelector = ".popup_type_addplace";
 export const addCardForm = "#addPlaceForm";
 export const imagePopupSelector = ".popup_type_increasedcard";
-export const cardTitle = document.querySelector("form__input[name = cardTitle");
-export const cardLink = document.querySelector("form__input[name = cardLink");
+export const cardTitle = document.querySelector(
+  "form__input[name = cardTitle]"
+);
+export const cardLink = document.querySelector("form__input[name = cardLink]");
 
 export const userConfig = {
   nameSelector: ".profile__name",
