@@ -79,7 +79,7 @@ const createCard = (item) => {
       name: item.cardTitle,
       link: item.cardLink,
       handleCardClick: () => {
-        popupWithImage.open(item.cardTitle, item.cardLink);
+        popupWithImage.open(cardTitle, item.cardLink);
       },
     },
     "#elements__template"
