@@ -17,8 +17,6 @@ import {
   imagePopupSelector,
   increasedImage,
   increasedElementCaption,
-  cardLink,
-  cardTitle,
   validationSettings,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
@@ -76,10 +74,10 @@ addPlaceButton.addEventListener("click", () => {
 const createCard = (item) => {
   const card = new Card(
     {
-      name: item.cardTitle,
-      link: item.cardLink,
+      name: item.placename,
+      link: item.picturelink,
       handleCardClick: () => {
-        popupWithImage.open(item.cardTitle, item.cardLink);
+        popupWithImage.open(item.placename, item.picturelink);
       },
     },
     "#elements__template"

@@ -1,33 +1,33 @@
 //Массив с карточками по умолчанию
 export const initialCards = [
   {
-    cardTitle: "Архыз",
-    cardLink:
+    placename: "Архыз",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg",
   },
   {
-    cardTitle: "Челябинская область",
-    cardLink:
+    placename: "Челябинская область",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg",
   },
   {
-    cardTitle: "Иваново",
-    cardLink:
+    placename: "Иваново",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg",
   },
   {
-    cardTitle: "Камчатка",
-    cardLink:
+    placename: "Камчатка",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg",
   },
   {
-    cardTitle: "Холмогорский район",
-    cardLink:
+    placename: "Холмогорский район",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg",
   },
   {
-    cardTitle: "Байкал",
-    cardLink:
+    placename: "Байкал",
+    picturelink:
       "https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg",
   },
 ];
@@ -54,10 +54,10 @@ export const editProfileForm = "#editForm";
 export const addPopupSelector = ".popup_type_addplace";
 export const addCardForm = "#addPlaceForm";
 export const imagePopupSelector = ".popup_type_increasedcard";
-export const cardTitle = document.querySelector(
-  "form__input[name = cardTitle]"
+export const placename = document.querySelector("form__input[name=placename]");
+export const picturelink = document.querySelector(
+  "form__input[name=picturelink]"
 );
-export const cardLink = document.querySelector("form__input[name = cardLink]");
 
 export const userConfig = {
   nameSelector: ".profile__name",
