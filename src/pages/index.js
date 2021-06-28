@@ -15,6 +15,8 @@ import {
   editProfilePopup,
   editProfileForm,
   imagePopupSelector,
+  placename,
+  picturelink,
   increasedImage,
   increasedElementCaption,
   validationSettings,
