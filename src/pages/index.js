@@ -14,15 +14,11 @@ import {
   avatar,
   avatarChange,
   avatarForm,
-  avatarPopup,
   cardsContainer,
   config,
   editButton,
   editForm,
-  initialCards,
   nameInput,
-  profileActivity,
-  profileName,
 } from "../utils/constants.js";
 const apiData = {
   url: "https://nomoreparties.co/v1/cohort-25",
