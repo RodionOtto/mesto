@@ -1,0 +1,11 @@
+.element {
+  position: relative;
+  background-color: #fff;
+  border-radius: 10px;
+  max-width: 282px;
+}
+@media screen and (max-width: 1000px) {
+  .element {
+    justify-self: center;
+  }
+}

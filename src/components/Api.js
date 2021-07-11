@@ -1,102 +1,99 @@
 export default class Api {
-  constructor(url, token) {
-    this._url = url;
-    this._token = token;
+  constructor(config) {
+    this._url = config.url;
+    this._headers = config.headers;
   }
 
-  _checkPromise(res) {
-    if (res.ok) {
-      return res.json();
-    }
-
-    return Promise.reject(`Ошибка: ${res.status}`);
-  }
-
-  getInitialCards() {
-    return fetch(`${this_.url}/cards`, {
-      headers: {
-        authorization: "this._token",
-      },
-    }).then(this._checkPromise());
-  }
-
-  getUserInfo() {
-    return fetch(`${this_.url}/users/me`, {
+  getData(path) {
+    return fetch(this._url + path, {
       method: "GET",
-      headers: {
-        authorization: "this._token",
-      },
-    }).then(this._checkPromise());
-  }
+      headers: this._headers,
+    })
+      .then((res) => {
+        if (res.ok) {
+          return res.json();
+        }
+        return Promise.reject(`Ошибка: ${res.status}`);
+      })
+      .catch((err) => {
+        console.log(err);
+      })
 
-  setUserInfo(data) {
-    return fetch(`${this_.url}/users/me`, {
+  }
+  patchProfile(data, button) {
+    this._rendering(button, true);
+    return fetch(this._url + "/users/me", {
       method: "PATCH",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         name: data.name,
-        description: data.description,
+        about: data.about,
       }),
-    }).then(this._checkPromise());
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this._rendering(button, false);
+      });
   }
 
-  addNewCard(placename, picturelink) {
-    return fetch(`${this_.url}/cards`, {
+  addNewCard(data, button) {
+    this._rendering(button, true);
+    return fetch(this._url + "/cards", {
       method: "POST",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
-        name: placename,
-        link: picturelink,
+        name: data.name,
+        link: data.link,
       }),
-    }).then(this._checkPromise());
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this._rendering(button, false);
+      });
   }
-
-  deleteCard() {
-    return fetch(`${this_.url}/cards/${_id}`, {
+  deleteCard(id) {
+    return fetch(this._url + "/cards/" + id, {
       method: "DELETE",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
-    }).then(this._checkPromise());
+      headers: this._headers,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
-
-  setLike() {
-    return fetch(`${this_.url}/cards/likes/${_id}`, {
-      method: "PUT",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
-    }).then(this._checkPromise());
+  handleCard(id, action) {
+    if (action == true) {
+      this._method = "PUT";
+    } else {
+      this._method = "DELETE";
+    }
+    return fetch(this._url + "/cards/likes/" + id, {
+      method: this._method,
+      headers: this._headers,
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err));
   }
-
-  deleteLike() {
-    return fetch(`${this_.url}/cards/likes/${_id}`, {
-      method: "DELETE",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
-    }).then(this._checkPromise());
-  }
-
-  changeAvatar(data) {
-    return fetch(`${this_.url}/users/me/avatar`, {
+  updateAvatar(data, button) {
+    this._rendering(button, true);
+    return fetch(this._url + "/users/me/avatar", {
       method: "PATCH",
-      headers: {
-        authorization: "this._token",
-        "Content-Type": "application/json",
-      },
+      headers: this._headers,
       body: JSON.stringify({
         avatar: data.avatar,
       }),
-    }).then(this._checkPromise());
+    })
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        this._rendering(button, false);
+      });
+  }
+  _rendering(button, isLoading) {
+    if (isLoading == true) {
+      button.textContent = "Сохранение...";
+    } else {
+      button.textContent = "Сохранить";
+    }
   }
 }

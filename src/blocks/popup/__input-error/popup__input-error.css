@@ -1,4 +1,23 @@
 .popup__input-error {
+  display: block;
+  font-family: Inter;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 12px;
+  line-height: 15px;
   color: #ff0000;
-  display: none;
+  margin: 5px 36px 10px;
+  opacity: 0;
+  min-height: 15px;
+}
+.popup__input-error:last-of-type {
+  margin-bottom: 12px;
+}
+@media screen and (max-width: 720px) {
+  .popup__input-error {
+    width: 238px;
+
+    margin-left: 22px;
+    margin-right: 22px;
+  }
 }

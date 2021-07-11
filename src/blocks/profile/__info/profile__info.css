@@ -1,15 +1,14 @@
 .profile__info {
-  max-width: 336px;
-  margin-right: auto;
-  display: flex;
-  align-items: center;
-  flex-wrap: wrap;
-  color: #fff;
+  display: grid;
+  grid-template-columns: 1fr 24px;
+  gap: 16px 18px;
 }
-
-@media (max-width: 768px) {
+@media screen and (max-width: 1000px) {
   .profile__info {
-    margin-right: 0;
+    grid-template-columns: 210px 18px;
+    gap: 14px 0;
     justify-content: center;
+    margin-bottom: 36px;
+    align-items: center;
   }
 }

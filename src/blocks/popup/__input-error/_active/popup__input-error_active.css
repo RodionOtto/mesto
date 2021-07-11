@@ -1,7 +1,3 @@
 .popup__input-error_active {
-  display: block;
-  padding-bottom: 13px;
-  font-weight: normal;
-  font-size: 12px;
-  line-height: 15px;
+  opacity: 1;
 }
