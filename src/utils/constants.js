@@ -34,6 +34,9 @@ export const initialCards = [
 
 //Объявление констант
 export const editButton = document.querySelector(".profile__edit-button");
+export const deletePopupButton = document.querySelector(
+  ".elements__delete-button"
+);
 export const popupEdit = document.querySelector(".popup_type_editprofile");
 export const nameInput = document.querySelector("#inputName");
 export const descriptionInput = document.querySelector("#inputDescription");
@@ -52,7 +55,9 @@ export const popupCloseBtn = ".popup__close";
 export const editProfilePopup = ".popup_type_editprofile";
 export const editProfileForm = "#editForm";
 export const addPopupSelector = ".popup_type_addplace";
+export const deletePopupSelector = ".popup_type_card-delete";
 export const addCardForm = "#addPlaceForm";
+export const deleteCardForm = "#popup-delete";
 export const imagePopupSelector = ".popup_type_increasedcard";
 export const placename = document.querySelector("form__input[name=placename]");
 export const picturelink = document.querySelector(
@@ -76,4 +81,9 @@ export const validationSettings = {
   inactiveButtonClass: "popup__submit-button_disabled",
   inputErrorClass: "popup__input_type_error",
   errorClass: "popup__input-error_active",
+};
+
+export const apiData = {
+  url: "https://mesto.nomoreparties.co/v1/cohort-25/",
+  token: "476060d2-67ac-43d3-a992-71a7e3ed7303",
 };

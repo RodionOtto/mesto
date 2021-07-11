@@ -21,11 +21,14 @@
     </header>
     <main>
       <section class="profile">
-        <img
-          alt="Аватар профиля"
-          class="profile__avatar"
-          src="<%=require('./images/Avatar.jpg')%>"
-        />
+        <div class="profile__box">
+          <button class="profile__avatar-edit" type="button"></button>
+          <img
+            alt="Аватар профиля"
+            class="profile__avatar"
+            src="<%=require('./images/Avatar.jpg')%>"
+          />
+        </div>
         <div class="profile__info">
           <h1 class="profile__name">Жак-Ив Кусто</h1>
           <button
@@ -147,6 +150,53 @@
       </div>
     </div>
 
+    <div class="popup popup_type_card-delete">
+      <div class="popup__container popup__container-small">
+        <button
+          class="popup__close"
+          type="button"
+          title="Закрыть окно"
+        ></button>
+        <form
+          class="popup__form"
+          name="popup-delete"
+          id="popup-delete"
+          action="post"
+        >
+          <h2 class="popup__title-small">Вы уверены?</h2>
+          <button
+            type="button"
+            class="popup__submit-button popup__submit-button_small"
+          >
+            Да
+          </button>
+        </form>
+      </div>
+    </div>
+
+    <div class="popup popup_type_card-avatar">
+      <div class="popup__container popup__container-small">
+        <button
+          class="popup__close"
+          type="button"
+          title="Закрыть окно"
+        ></button>
+        <form class="popup__form" name="popup-avatar" id="popup-avatar">
+          <h2 class="popup__title-small">Обновить аватар</h2>
+          <input
+            type="url"
+            id="avatarUrl"
+            class="popup__input"
+            name="avatar"
+            placeholder=""
+            autocomplete="off"
+            required
+          />
+          <button type="button" class="popup__avatar-button">Да</button>
+        </form>
+      </div>
+    </div>
+
     <div class="popup popup_type_increasedcard">
       <figure class="increasedcard">
         <button type="button" class="popup__close"></button>
@@ -160,17 +210,18 @@
         <img class="elements__image" alt="" src="#" />
         <div class="elements__card-info">
           <h2 class="elements__header"></h2>
-          <button
-            class="elements__like-button"
-            type="button"
-            title="Оценить фотографию"
-          ></button>
-          <button
-            type="button"
-            class="elements__delete-button"
-            title="Удалить карточку"
-          ></button>
         </div>
+        <button
+          class="elements__like-button"
+          type="button"
+          title="Оценить фотографию"
+        ></button>
+        <button
+          type="button"
+          class="elements__delete-button"
+          title="Удалить карточку"
+        ></button>
+        <p class="card__like-counter">1</p>
       </li>
     </template>
   </body>

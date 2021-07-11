@@ -15,16 +15,19 @@ import {
   editProfilePopup,
   editProfileForm,
   imagePopupSelector,
-  placename,
-  picturelink,
   increasedImage,
   increasedElementCaption,
   validationSettings,
+  apiData,
+  deletePopupButton,
+  deletePopupSelector,
+  deleteCardForm,
 } from "../utils/constants.js";
 import Section from "../components/Section.js";
 import UserInfo from "../components/UserInfo.js";
 import PopupWithImage from "../components/PopupWithImage.js";
 import PopupWithForm from "../components/PopupWithForm.js";
+import Api from "../components/Api.js";
 
 // Открытие попапа карточки
 const popupWithImage = new PopupWithImage(
@@ -33,6 +36,9 @@ const popupWithImage = new PopupWithImage(
   increasedElementCaption
 );
 popupWithImage.setEventListeners();
+
+const deletePopup = new PopupWithForm(deletePopupSelector, deleteCardForm);
+deletePopup.setEventListeners();
 
 // Данные профиля
 const { nameSelector, descriptionSelector } = userConfig;
@@ -81,6 +87,9 @@ const createCard = (item) => {
       handleCardClick: () => {
         popupWithImage.open(item.placename, item.picturelink);
       },
+      handleDeleteCardClick: () => {
+        deletePopup.open();
+      },
     },
     "#elements__template"
   );
@@ -109,6 +118,10 @@ addProfileValidator.enableValidation();
 
 const editProfileValidator = new FormValidator(validationSettings, popupEdit);
 editProfileValidator.enableValidation();
+
+//Api
+const { url, token } = apiData;
+//const api = new Api(url, token);
 
 /*const addProfileValidator = new FormValidator(
   validationSettings,
